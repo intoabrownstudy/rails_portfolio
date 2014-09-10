@@ -1,0 +1,17 @@
+<h1>Edit User</h1>
+
+<%= form_for(@class_project, :url => update_project_path) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :age %>
+  <%= f.text_field :age %>
+
+  <%= f.submit("Edit User")%>
+  
+  <% @user.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+
+<% end %>

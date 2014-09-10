@@ -1,0 +1,21 @@
+<h1>New Article</h1>
+
+<!-- Creates a POST request to "/contact" -->
+<%= @form_for @article do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  
+  <%= f.label :draft %>
+  <%= f.text_field :draft %>
+
+  <%= f.submit("Create a New Article")%>
+  
+  <% @contact.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+
+<% end %>

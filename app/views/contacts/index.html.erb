@@ -1,0 +1,8 @@
+<h1>Contact Index</h1>
+
+<% @contacts.each do |contact| %>
+  <!-- <p><a href="<%= contact_path(contact.id) %>"><%= contact.name %></a></p> -->
+  <p><%= link_to(contact.name, link_path(contact.id)) %></p>
+<% end %>
+
+<%= link_to("New Contact", new_link_path) %>

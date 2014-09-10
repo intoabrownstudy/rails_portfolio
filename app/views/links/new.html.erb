@@ -1,0 +1,18 @@
+<h1>New Link</h1>
+
+<!-- Creates a POST request to "/links" -->
+<%= @form_for @link do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+
+  <%= f.submit("Make a New Link")%>
+  
+  <% @link.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+
+<% end %>

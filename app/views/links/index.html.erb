@@ -1,0 +1,8 @@
+<h1>Links Index</h1>
+
+<% @links.each do |link| %>
+  <!-- <p><a href="<%= link_path(link.id) %>"><%= link.name %></a></p> -->
+  <p><%= link_to(link.name, link_path(link.id)) %></p>
+<% end %>
+
+<%= link_to("New Links", new_link_path) %>

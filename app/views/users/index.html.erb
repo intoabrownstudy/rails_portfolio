@@ -1,0 +1,8 @@
+<h1>Users Index</h1>
+
+<% @users.each do |user| %>
+  <!-- <p><a href="<%= user_path(user.id) %>"><%= user.name %></a></p> -->
+  <p><%= link_to(user.name, user_path(user.id)) %></p>
+<% end %>
+
+<%= link_to("New User", new_user_path) %>
