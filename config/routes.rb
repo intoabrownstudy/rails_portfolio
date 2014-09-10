@@ -34,6 +34,21 @@ Portfolio::Application.routes.draw do
   get "contact/new" => 'contact#new', :as => "new_contact_link"  
   post "contacts" => 'contacts#create', :as => 'create_contact'
   
+  #article routes
+  
+  get "contact" => 'contacts#index', :as => "contacts"
+  get "contacts/:id" => 'contacts#show', :as => "contact"
+  
+  get "contact/new" => 'contact#new', :as => "new_contact_link"  
+  post "contacts" => 'contacts#create', :as => 'create_contact'
+  
 end
 
-
+#   get 'articles' => 'articles#index', :as => 'articles_index'
+#   get 'article/:id' => 'articles#show', :as => 'article_show'
+#
+#   get 'new_article' => 'articles#new', :as => 'new_article'
+#   post 'articles' => 'articles#create', :as => 'create_article'
+#
+#   get 'article/:id/edit' => 'articles#edit', :as => 'edit_article'
+#   put 'article/:id' => 'articles#update', :as => 'update_article'
