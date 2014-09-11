@@ -1,7 +1,6 @@
 <h1>New Class Project</h1>
 
-<!-- Creates a POST request to "/class_projects" -->
-<%= @form_for @class_project do |f| %>
+<%= form_for @class_project do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -13,12 +12,13 @@
   <%= f.text_field :primary_language %>
   
   <%= f.label :featured %>
-  <%= f.text_field :featured %>
+  <%= f.check_box :featured %>
 
   <%= f.submit("Make a New Class Project")%>
   
   <% @class_project.errors.full_messages.each do |msg| %>
       <p><%= msg %></p>
-    <% end %>
+
+<% end %>
 
 <% end %>

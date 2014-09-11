@@ -1,1 +1,11 @@
-<h1><%= @article.name %></h1>
+<h1><%= @article.title %></h1>
+
+<p><%= @article.content %><p>
+  
+<% if @ip %>
+  <%= form_for @like do |f| %>
+    <%= f.hidden_field :article_id, value: @article.id %>
+    <%= f.hidden_field :ip, value: request.remote_ip %> 
+    <%= f.submit value: "Like" %> 
+  <% end %>
+<% end %>

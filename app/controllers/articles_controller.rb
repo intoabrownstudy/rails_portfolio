@@ -17,16 +17,21 @@ class ArticlesController < ApplicationController
     else
       render "new"
     end
-end
+end  
 
   def show
-      @article = Article.find(params[:id])
-    end
+    @article = Article.find(params[:id])
+    @like = Like.new
+    
+    @all_likes = Like.where({article_id: params[:id]})
+    
+    @ip = true
 
+    @all_likes.each do |a|
+      if a.ip == request.remote_ip
+        @ip = false
+  end
 end
-
-end
-
 
 #    def edit
 #      @article = Article.find(params[:id])
@@ -50,5 +55,7 @@ end
 #     Article.find(params[:id]).delete
 #     redirect_to articles_path
 #   end
-#
-# end
+
+end
+end
+

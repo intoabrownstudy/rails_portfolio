@@ -7,6 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+<p><%= session %></p>
+
+<p>Your IP address is: <%= request.remote_ip %></p>
 
 <%= yield %>
 

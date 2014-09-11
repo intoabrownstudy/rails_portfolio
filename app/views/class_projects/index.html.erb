@@ -1,8 +1,7 @@
 <h1>Class Projects Index</h1>
 
 <% @class_projects.each do |class_project| %>
-  <!-- <p><a href="<%= class_project_path(class_project.id) %>"><%= class_project.name %></a></p> -->
   <p><%= link_to(class_project.name, class_project_path(class_project.id)) %></p>
 <% end %>
 
-<%= link_to("New ClassProject", new_class_project_path) %>
+<p><%= link_to("Home", root_path)%></p>

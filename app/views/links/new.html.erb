@@ -1,7 +1,6 @@
 <h1>New Link</h1>
 
-<!-- Creates a POST request to "/links" -->
-<%= @form_for @link do |f| %>
+<%= form_for @link do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
