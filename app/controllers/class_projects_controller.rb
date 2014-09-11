@@ -5,28 +5,17 @@ class ClassProjectsController < ApplicationController
     end
     
     def new
-      class_project = ClassProject.new
-    end
-  
-    def create
-      class_project = ClassProject.new(params[:class_project])
-
-      if @class_project.save
-        "Yaaaay!"
-      else
-        "ERRRRORRRR"
-      end
+      @class_project = ClassProject.new
     end
   
     def create
       @class_project = ClassProject.new(params[:class_project])
 
       if @class_project.save
-        redirect_to class_projects_path #the "index" action, aliased in our routes folder as "class_projects"
+        redirect_to class_projects_path 
       else
-        #1. Display the form
-        #2. Show all relevant errors
-        render "new" #refers to app/views/class_projects/new
+        
+        render "new" 
       end
     end
   
@@ -36,3 +25,28 @@ class ClassProjectsController < ApplicationController
   
   end
 
+
+#    def edit
+#      @class_projects = ClassProject.find(params[:id])
+#    end
+#
+#    def update
+#      @class_project = ClassProject.find(params[:id])
+#
+#      if @class_project.update_attributes(params[:class_project])
+#        render "detail"
+#      else
+#        render "edit"
+#      end
+#    end
+#
+#    def detail
+#      @class_project = ClassProject.find(params[:id])
+#    end
+#
+#    def delete
+#      ClassProject.find(params[:id]).delete
+#      redirect_to class_projects_path
+#    end
+#
+# end

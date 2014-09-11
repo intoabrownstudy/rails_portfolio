@@ -5,35 +5,44 @@ class LinksController < ApplicationController
   end
   
   def new
-    link = Link.new
-  end
-
-  def create
-    link = Link.new(params[:link])
-
-    if @link.save
-      "Yaaaay!"
-    else
-      "ERRRRORRRR"
-    end
+    @link = Link.new
   end
 
   def create
     @link = Link.new(params[:link])
 
     if @link.save
-      redirect_to links_path #the "index" action, aliased in our routes folder as "links"
+      redirect_to links_path
     else
-      #1. Display the form
-      #2. Show all relevant errors
-      render "new" #refers to app/views/links/new
+      render "new" 
     end
   end
 
   def show
       @link = Link.find(params[:id])
-    end
-
+  end
 end
 
-end
+#   def edit
+#     @link = Link.find(params[:id])
+#   end
+#
+#   def update
+#     @link = Link.find(params[:id])
+#     if @link.update_attributes(params[:link])
+#       render "detail"
+#     else
+#       render "edit"
+#     end
+#   end
+#
+#   def detail
+#     @link = Link.find(params[:id])
+#   end
+#
+#   def delete
+#     Link.find(params[:id]).delete
+#     redirect_to links_path
+#   end
+#
+# end

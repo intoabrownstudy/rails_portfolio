@@ -5,35 +5,43 @@ class ContactsController < ApplicationController
   end
   
   def new
-    contact = Contact.new
-  end
-
-  def create
-    contact = Contact.new(params[:contact])
-
-    if @contact.save
-      "Yaaaay!"
-    else
-      "ERRRRORRRR"
-    end
+    @contact = Contact.new
   end
 
   def create
     @contact = Contact.new(params[:contact])
 
     if @contact.save
-      redirect_to contacts_path #the "index" action, aliased in our routes folder as "contacts"
+      redirect_to contacts_path 
     else
-      #1. Display the form
-      #2. Show all relevant errors
-      render "new" #refers to app/views/contacts/new
-    end
+      render "new" 
   end
 
   def show
       @contact = Contact.find(params[:id])
     end
-
 end
 
-end
+
+#   def edit
+#     @contact = Contact.find(params[:id])
+#   end
+#
+#   def update
+#     @contact = Contact.find(params[:id])
+#     if @contact.update_attributes(params[:contact])
+#       render "detail"
+#     else
+#       render "edit"
+#     end
+#   end
+#
+#   def detail
+#     @contact = Contact.find(params[:id])
+#   end
+#
+#   def delete
+#     Contact.find(params[:id]).delete
+#     redirect_to contact_forms_path
+#   end
+# end
