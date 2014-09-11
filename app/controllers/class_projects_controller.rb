@@ -36,4 +36,3 @@ class ClassProjectsController < ApplicationController
   
   end
 
-  end
