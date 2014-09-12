@@ -1,7 +1,11 @@
 class LoginsController < ApplicationController
-end
-
-def create
+  skip_before_filter :authorize, :only => [:new, :create]
+  
+  def new
+    #you can add different paths
+  end
+  
+  def create
     user = User.find_by_email(params[:email])
     
     if user && user.authenticate(params[:password])
@@ -10,6 +14,11 @@ def create
     else
       raise "Invalid login."
     end
+  end
+  
+  def destroy
+    session[:user_id] = nil # Could also call `reset_session` to clear the entire session.
+    redirect_to articles_path
   end
   
 end

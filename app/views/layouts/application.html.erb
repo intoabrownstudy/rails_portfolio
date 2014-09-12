@@ -8,9 +8,11 @@
 </head>
 <body>
   
-<p><%= session %></p>
-
-<p>Your IP address is: <%= request.remote_ip %></p>
+<% if current_user %>
+  Logged in as <%= current_user.email %>! (<%= link_to "Log out!", logout_path %>)
+<% else %>
+  NOT logged in!
+<% end %>
 
 <%= yield %>
 

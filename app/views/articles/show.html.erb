@@ -9,3 +9,23 @@
     <%= f.submit value: "Like" %> 
   <% end %>
 <% end %>
+
+<!-- <p>
+  <b>Title:</b>
+  <%= @article.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= raw(@article.html_body) %>
+</p>
+
+<% if session[:liked_article_ids] && session[:liked_article_ids].include?(@article.id) %>
+  You like this article!
+<% else %>
+  <%= link_to "Like this article", like_path(@article.id) %> |
+<% end %>
+
+
+<%= link_to 'Edit', edit_article_path(@article.id) %> |
+<%= link_to 'Back', articles_path %> -->
