@@ -4,4 +4,5 @@
   <p><%= link_to(contact.name, contact_path(contact.id)) %> - <%= contact.message%></p>
 <% end %>
 
-<%= link_to("Home", root_path) %>
+<p><%= link_to("New Contact", new_contact_path) %></p>
+<p><%= link_to("Home", root_path) %></p>

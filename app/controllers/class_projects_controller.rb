@@ -25,28 +25,27 @@ class ClassProjectsController < ApplicationController
   
   end
 
-
-#    def edit
-#      @class_projects = ClassProject.find(params[:id])
-#    end
-#
-#    def update
-#      @class_project = ClassProject.find(params[:id])
-#
-#      if @class_project.update_attributes(params[:class_project])
-#        render "detail"
-#      else
-#        render "edit"
-#      end
-#    end
-#
-#    def detail
-#      @class_project = ClassProject.find(params[:id])
-#    end
-#
-#    def delete
-#      ClassProject.find(params[:id]).delete
-#      redirect_to class_projects_path
-#    end
-#
-# end
+    def edit
+      @class_project = ClassProject.find(params[:id])
+    end
+  
+    def update
+        @class_project = ClassProject.find(params[:id])
+    
+        if @class_project.update_attributes(params[:project])
+          redirect_to class_project_path(@project.id)
+        else
+          render "edit"
+        end
+      end
+    
+      def destroy
+        @class_project = ClassProject.find(params[:id])
+        if @class_project.delete
+          flash[:notice] = "Project deleted."
+          redirect_to class_projects_path
+        else
+          render 'edit'
+        end
+      end
+  end

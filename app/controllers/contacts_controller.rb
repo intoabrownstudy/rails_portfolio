@@ -12,9 +12,11 @@ class ContactsController < ApplicationController
     @contact = Contact.new(params[:contact])
 
     if @contact.save
-      redirect_to contacts_path 
+      flash[:notice] = "Your message has been received, you will receive a reply soon."
+      redirect_to root_path
     else
-      render "new" 
+      render 'new'
+    end
   end
 
   def show
@@ -23,26 +25,27 @@ class ContactsController < ApplicationController
   end
 end
 
+  def edit
+    @contact = Contact.find(params[:id])
+  end
 
-#   def edit
-#     @contact = Contact.find(params[:id])
-#   end
-#
-#   def update
-#     @contact = Contact.find(params[:id])
-#     if @contact.update_attributes(params[:contact])
-#       render "detail"
-#     else
-#       render "edit"
-#     end
-#   end
-#
-#   def detail
-#     @contact = Contact.find(params[:id])
-#   end
-#
-#   def delete
-#     Contact.find(params[:id]).delete
-#     redirect_to contact_forms_path
-#   end
-# end
+  def update
+    @contact = Contact.find(params[:id])
+
+    if @contact.update_attributes(params[:contact])
+      redirect_to contact_path(@contact.id)
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @contact = Contact.find(params[:id])
+    if @contact.delete
+      flash[:notice] = "Contact deleted."
+      redirect_to contacts_path
+    else
+      render 'edit'
+    end
+  end
+end

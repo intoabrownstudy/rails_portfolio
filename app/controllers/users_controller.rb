@@ -7,11 +7,13 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     
     if @user.save
+      flash[:notice] = "User successfully created, please log in."
       redirect_to articles_path
     else
+      flash[:alert] = "Something went wrong!"
       raise "User could not be saved."
     end
     
-    # Process the form submission to - hopefully - create a new user.
   end
 end
+
